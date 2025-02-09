@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SymptomIQ - Health Condition Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <h1>SymptomIQ - Health Condition Predictor</h1>
+
+        <!-- Symptom Selection Section (Left) -->
+            <div class="symptom-section">
+        <h2>Select Symptoms</h2>
+        <div class="category-selector">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="all">All Symptoms</option>
+                <option value="skin">Skin</option>
+                <option value="digestive">Digestive</option>
+                <option value="respiratory">Respiratory</option>
+                <option value="muscular">Muscular</option>
+                <option value="neurological">Neurological</option>
+                <option value="general">General</option>
+                <option value="urinary">Urinary</option>
+                <option value="vision">Vision</option>
+                <option value="mental">Mental</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <ul id="symptom-list">
+            {% for key, value in symptoms.items() %}
+            <li class="symptom-item" data-symptom="{{ key }}" data-category="{{ get_category(key) }}">
+                <strong>{{ value.name }}</strong>: {{ value.description }}
+                <button class="add-btn">Add</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+        <!-- Selected Symptoms and Prediction Section (Center) -->
+        <div class="center-section">
+            <div class="selected-symptoms-section">
+                <h2>Selected Symptoms</h2>
+                <ul id="selected-symptoms"></ul>
+                <button id="predict-btn">Predict Health Condition</button>
+            </div>
+            <div class="result-section" id="result-section" style="display: none;">
+                <h2>Prediction Result</h2>
+                <p id="prediction-result"></p>
+            </div>
+        </div>
+
+        <div class="chatbot-box">
+            <div class="chatbot-header">Chatbot</div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <p>Welcome! How can I assist you today?</p>
+            </div>
+            <div class="loading-spinner" id="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message..." />
+                <button id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

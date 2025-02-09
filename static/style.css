@@ -1,0 +1,254 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 600% 600%;
+    animation: gradientBackground 15s ease infinite; /* Smoothly changing gradient */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 95%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Left, Center, Right */
+    grid-gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #4a148c; /* Deep purple */
+    margin-bottom: 20px;
+    grid-column: span 3; /* Span across all columns */
+}
+
+/* Symptom Selection Section (Left) */
+.symptom-section {
+    background: #fff;
+    border: 1px solid #ddd; /* Add border */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    overflow-y: auto; /* Scrollable if content overflows */
+    max-height: 80vh;
+}
+
+.category-selector select {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #4a148c; /* Deep purple border */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #f3e5f5; /* Light purple background */
+    color: #4a148c; /* Deep purple text */
+}
+
+.category-selector select:hover {
+    border-color: #7b1fa2; /* Brighter purple on hover */
+    box-shadow: 0 0 8px rgba(74, 20, 140, 0.5);
+}
+
+.symptom-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive layout */
+    gap: 10px;
+}
+
+.symptom-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f3e5f5; /* Light purple background */
+    border: 1px solid #e1bee7; /* Softer purple border */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #4a148c; /* Deep purple text */
+}
+
+.symptom-item:hover {
+    background: #4a148c; /* Deep purple background */
+    color: #fff; /* White text */
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(74, 20, 140, 0.3);
+}
+
+.symptom-item button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #4a148c; /* Deep purple button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.symptom-item button:hover {
+    background: #7b1fa2; /* Brighter purple on hover */
+    transform: scale(1.05);
+}
+
+/* Selected Symptoms and Prediction Section (Center) */
+.center-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #fff;
+    border: 1px solid #ddd; /* Add border */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+#selected-symptoms li {
+    padding: 10px 15px;
+    background: #4a148c; /* Deep purple background */
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#predict-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 30px;
+    background: #4a148c; /* Deep purple button */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#predict-btn:hover {
+    background: #7b1fa2; /* Brighter purple on hover */
+    transform: scale(1.05);
+}
+
+.result-section {
+    text-align: center;
+    padding: 20px;
+    background: #f3e5f5; /* Light purple background */
+    border: 1px solid #e1bee7; /* Softer purple border */
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    color: #4a148c; /* Deep purple text */
+}
+
+/* Chatbot Section (Right) */
+.chatbot-box {
+    background: #fff;
+    border: 1px solid #ddd; /* Add border */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.chatbot-header {
+    background: #4a148c; /* Deep purple header */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f3e5f5; /* Light purple background */
+    border: 1px solid #e1bee7; /* Softer purple border */
+    border-radius: 8px;
+}
+
+.chatbot-messages p {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #e1bee7; /* Softer purple background */
+    border-radius: 8px;
+    word-wrap: break-word;
+    color: #4a148c; /* Deep purple text */
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: #f3e5f5; /* Light purple background */
+    color: #4a148c; /* Deep purple text */
+}
+
+.chatbot-input button {
+    padding: 10px 15px;
+    background: #4a148c; /* Deep purple button */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chatbot-input button:hover {
+    background: #7b1fa2; /* Brighter purple on hover */
+}
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4a148c;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
